@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const useForm = (callback: any, validate: any, formData?: any) => {
   const [values, setValues] = useState<any>({});
@@ -6,20 +6,20 @@ const useForm = (callback: any, validate: any, formData?: any) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      callback();
-    }
+    // if (Object.keys(errors).length === 0 && isSubmitting) {
+    //   callback();
+    // }
   }, [errors]);
 
   const handleSubmitEdit = (event: any) => {
-    if (event) event.preventDefault();
-    if (Object.keys(values).length > 0) {
-      setErrors(validate(Object.assign({}, formData, values)));
-      setIsSubmitting(true);
-    } else {
-      setErrors(validate(formData));
-      setIsSubmitting(true);
-    }
+    // if (event) event.preventDefault();
+    // if (Object.keys(values).length > 0) {
+    //   setErrors(validate(Object.assign({}, formData, values)));
+    //   setIsSubmitting(true);
+    // } else {
+    //   setErrors(validate(formData));
+    //   setIsSubmitting(true);
+    // }
   };
 
   const handleSubmit = (event: any) => {
@@ -40,7 +40,7 @@ const useForm = (callback: any, validate: any, formData?: any) => {
     setIsSubmitting(false);
     setErrors({});
     setValues({});
-  }
+  };
 
   return {
     handleChange,

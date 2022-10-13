@@ -1,8 +1,8 @@
 // ** MUI Imports
-import { PaletteMode } from '@mui/material';
+import { PaletteMode } from "@mui/material";
 
 // ** Types
-import { ContentWidth } from 'src/@core/layouts/types';
+import { ContentWidth } from "src/@core/layouts/types";
 
 type ThemeConfig = {
   mode: PaletteMode;
@@ -17,9 +17,9 @@ type ThemeConfig = {
 
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
-  templateName: 'MyCash' /* App Name */,
-  mode: 'light' /* light | dark */,
-  contentWidth: 'boxed' /* full | boxed */,
+  templateName: "Oak" /* App Name */,
+  mode: "light" /* light | dark */,
+  contentWidth: "boxed" /* full | boxed */,
 
   // ** Routing Configs
   routingLoader: true /* true | false */,

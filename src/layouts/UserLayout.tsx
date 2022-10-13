@@ -1,25 +1,25 @@
 // ** React Imports
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 // ** MUI Imports
-import Box from '@mui/material/Box';
-import { Theme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import Box from "@mui/material/Box";
+import { Theme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 // ** Layout Imports
 // !Do not remove this Layout import
-import VerticalLayout from 'src/@core/layouts/VerticalLayout';
+import VerticalLayout from "src/@core/layouts/VerticalLayout";
 
 // ** Navigation Imports
-import VerticalNavItems from 'src/navigation/vertical';
+import VerticalNavItems from "src/navigation/vertical";
 
 // ** Component Import
-import UpgradeToProButton from './components/UpgradeToProButton';
-import VerticalAppBarContent from './components/vertical/AppBarContent';
+import UpgradeToProButton from "./components/UpgradeToProButton";
+import VerticalAppBarContent from "./components/vertical/AppBarContent";
 
 // ** Hook Import
-import { useSettings } from 'src/@core/hooks/useSettings';
-import Authenticated from 'src/@core/components/Authenticated';
+import { useSettings } from "src/@core/hooks/useSettings";
+import Navbar from "src/@core/components/Common/Navbar";
 
 interface Props {
   children: ReactNode;
@@ -37,11 +37,11 @@ const UserLayout = ({ children }: any) => {
    *  to know more about what values can be passed to this hook.
    *  ! Do not change this value unless you know what you are doing. It can break the template.
    */
-  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
+  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down("lg"));
 
   const UpgradeToProImg = () => {
     return (
-      <Box sx={{ mx: 'auto' }}>
+      <Box sx={{ mx: "auto" }}>
         {/* <a
           target='_blank'
           rel='noreferrer'
@@ -54,26 +54,11 @@ const UserLayout = ({ children }: any) => {
   };
 
   return (
-    <VerticalLayout
-      hidden={hidden}
-      settings={settings}
-      saveSettings={saveSettings}
-      verticalNavItems={VerticalNavItems()} // Navigation Items
-      afterVerticalNavMenuContent={UpgradeToProImg}
-      verticalAppBarContent={(
-        props, // AppBar Content
-      ) => (
-        <VerticalAppBarContent
-          hidden={hidden}
-          settings={settings}
-          saveSettings={saveSettings}
-          toggleNavVisibility={props.toggleNavVisibility}
-        />
-      )}>
+    <>
+      <Navbar />
       {children}
-      <UpgradeToProButton />
-    </VerticalLayout>
+    </>
   );
 };
 
-export default Authenticated(UserLayout);
+export default UserLayout;

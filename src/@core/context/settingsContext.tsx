@@ -1,14 +1,14 @@
 // ** React Imports
-import { createContext, useState, ReactNode } from 'react';
+import { createContext, useState, ReactNode } from "react";
 
 // ** MUI Imports
-import { PaletteMode } from '@mui/material';
+import { PaletteMode } from "@mui/material";
 
 // ** ThemeConfig Import
-import themeConfig from 'src/configs/themeConfig';
+import themeConfig from "src/configs/themeConfig";
 
 // ** Types Import
-import { ThemeColor, ContentWidth } from 'src/@core/layouts/types';
+import { ThemeColor, ContentWidth } from "src/@core/layouts/types";
 
 export type Settings = {
   mode: PaletteMode;
@@ -22,7 +22,7 @@ export type SettingsContextValue = {
 };
 
 const initialSettings: Settings = {
-  themeColor: 'error',
+  themeColor: "primary",
   mode: themeConfig.mode,
   contentWidth: themeConfig.contentWidth,
 };
