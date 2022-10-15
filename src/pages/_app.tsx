@@ -24,8 +24,6 @@ import {
   SettingsProvider,
 } from "src/@core/context/settingsContext";
 
-import { AuthContextProvider } from "../context/auth/AuthContext";
-
 // ** Utils Imports
 import { createEmotionCache } from "src/@core/utils/create-emotion-cache";
 

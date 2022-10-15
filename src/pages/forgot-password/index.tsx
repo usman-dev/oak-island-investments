@@ -14,6 +14,7 @@ import CardContent from "@mui/material/CardContent";
 import { styled } from "@mui/material/styles";
 import MuiCard, { CardProps } from "@mui/material/Card";
 import LoadingButton from "@mui/lab/LoadingButton";
+import Navbar from "src/@core/components/Common/Navbar";
 
 // ** Layout Import
 import BlankLayout from "src/@core/layouts/BlankLayout";
@@ -39,10 +40,12 @@ const ForgotPassword = () => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = () => {
-    setMessage("Email Sent!");
+    setMessage("An email has been sent to you with a link to reset your password. If you haven't received an email, please contact us at help@oakislandinvestments.net for further assistance");
   };
 
   return (
+    <>
+    <Navbar/>
     <Box className="content-center">
       <Card sx={{ zIndex: 1 }}>
         <CardContent
@@ -107,7 +110,7 @@ const ForgotPassword = () => {
               variant="contained"
               sx={{ marginBottom: 4 }}
               onClick={() => {
-                router.push("/login");
+                router.push("/");
               }}
             >
               Back
@@ -117,6 +120,7 @@ const ForgotPassword = () => {
       </Card>
       <FooterIllustrationsV1 />
     </Box>
+    </>
   );
 };
 
