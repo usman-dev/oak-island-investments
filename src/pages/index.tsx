@@ -27,8 +27,8 @@ import FooterIllustrationsV1 from "src/views/pages/auth/FooterIllustration";
 // import { AuthContext } from "../../context/auth/AuthContext";
 import { FormHelperText } from "@mui/material";
 import useForm from "src/@core/hooks/useForm";
-import { loginValidate } from "src/helpers/validations";
 import Navbar from "src/@core/components/Common/Navbar";
+import axios from "axios";
 
 const data = [
   {
@@ -78,18 +78,17 @@ const LoginPage = () => {
 
   const router = useRouter();
 
-  const { values, errors, handleChange } = useForm(() => null, loginValidate);
+  const { values, errors, handleChange } = useForm(() => null, null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      values.email === data[0]?.email &&
-      values.password === data[0]?.password
-    ) {
+    const data = await axios.post("/api/login", values);
+
+    if (data.data?.status === 200) {
       router.push("/dashboard");
     } else {
-      setIsError("Email or password is incorrect!");
+      setIsError(data.data?.message);
     }
   };
 

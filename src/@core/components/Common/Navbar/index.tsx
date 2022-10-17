@@ -14,10 +14,14 @@ import {
   Typography,
   Button,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useRouter } from "next/router";
 import { left } from "@popperjs/core";
-
+const StyledImage = styled("img")({
+  objectFit: "contain",
+  height: "70px",
+});
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -46,7 +50,7 @@ export default function Navbar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Image
-        src="/images/Logo.png"
+        src="../../../../../public/images/Logo.png"
         width="100"
         height="100"
         onClick={() => changeRoute("/")}
@@ -86,35 +90,52 @@ export default function Navbar(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 0.02, display: { xs: "none", sm: "block" } }}
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
           >
-            <Image
-              src="/images/Logo.png"
-              width="70"
-              height="50"
-              onClick={() => changeRoute("/")}
-            />
-          </Typography>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, color: "#fff" }}
-          >
-            <a onClick={() => changeRoute("/")}><h3 >Oak Island Investments</h3></a>
-          </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item: any) => (
-              <Button
-                key={item.title}
-                sx={{ color: "#fff" }}
-                onClick={() => changeRoute(item?.route)}
+            <Box sx={{ display: "flex" }}>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ display: { xs: "none", sm: "block" } }}
               >
-                {item.title}
-              </Button>
-            ))}
+                <StyledImage
+                  // style={{ background: theme?.palette?.primary?.main }}
+                  src="/images/Logo.png"
+                />
+              </Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  display: {
+                    xs: "none",
+                    sm: "block",
+                    margin: "10px !important",
+                  },
+                  color: "#fff",
+                }}
+              >
+                <a onClick={() => changeRoute("/")}>
+                  <h3>Oak Island Investments</h3>
+                </a>
+              </Typography>
+            </Box>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              {navItems.map((item: any) => (
+                <Button
+                  key={item.title}
+                  sx={{ color: "#fff" }}
+                  onClick={() => changeRoute(item?.route)}
+                >
+                  {item.title}
+                </Button>
+              ))}
+            </Box>
           </Box>
         </Toolbar>
       </AppBar>

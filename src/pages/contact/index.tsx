@@ -4,7 +4,7 @@ import Navbar from "src/@core/components/Common/Navbar";
 const Contact = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Box
         sx={{
           marginTop: "200px",

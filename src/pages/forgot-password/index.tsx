@@ -21,6 +21,7 @@ import BlankLayout from "src/@core/layouts/BlankLayout";
 
 // ** Demo Imports
 import FooterIllustrationsV1 from "src/views/pages/auth/FooterIllustration";
+import axios from "axios";
 
 // ** Styled Components
 const Card = styled(MuiCard)<CardProps>(({ theme }) => ({
@@ -39,10 +40,10 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = () => {
-    setMessage(
-      "An email has been sent to you with a link to reset your password. If you haven't received an email, please contact us at help@oakislandinvestments.net for further assistance"
-    );
+  const handleSubmit = async () => {
+    const data = await axios.post("/api/forget");
+
+    setMessage(data?.data?.message);
   };
 
   return (
