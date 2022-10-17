@@ -49,11 +49,9 @@ export default function Navbar(props: Props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Image
-        src="../../../../../public/images/Logo.png"
-        width="100"
-        height="100"
-        onClick={() => changeRoute("/")}
+      <StyledImage
+        // style={{ background: theme?.palette?.primary?.main }}
+        src="/images/Logo.png"
       />
       <List>
         {navItems.map((item: any) => (
