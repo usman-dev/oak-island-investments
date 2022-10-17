@@ -5,9 +5,15 @@ const webpack = require('webpack');
 module.exports = {
   trailingSlash: true,
   reactStrictMode: false,
+  // unoptimized: true,
   experimental: {
     esmExternals: false,
     jsconfigPaths: true, // enables it for both jsconfig.json and tsconfig.json
+  },
+  images: {
+    loader: 'akamai',
+    path: '',
+    unoptimized: true,
   },
   webpack: (config) => {
     config.resolve.alias = {

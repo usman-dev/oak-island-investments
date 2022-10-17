@@ -121,7 +121,7 @@ const LoginPage = () => {
                 variant="h5"
                 sx={{ fontWeight: 600, marginBottom: 1.5 }}
               >
-                Welcome to Oak Island Investments! 👋🏻
+                Welcome to Oak Island Investments!
               </Typography>
               <Typography variant="body2">
                 Please sign-in to your account

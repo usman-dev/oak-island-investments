@@ -66,7 +66,7 @@ const App = (props: ExtendedAppProps) => {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>{`${themeConfig.templateName} Portal`}</title>
+        <title>{`Portal`}</title>
         <meta name="description" content={`${themeConfig.templateName}`} />
         <meta
           name="keywords"
