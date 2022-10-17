@@ -40,86 +40,88 @@ const ForgotPassword = () => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = () => {
-    setMessage("An email has been sent to you with a link to reset your password. If you haven't received an email, please contact us at help@oakislandinvestments.net for further assistance");
+    setMessage(
+      "An email has been sent to you with a link to reset your password. If you haven't received an email, please contact us at help@oakislandinvestments.net for further assistance"
+    );
   };
 
   return (
     <>
-    <Navbar/>
-    <Box className="content-center">
-      <Card sx={{ zIndex: 1 }}>
-        <CardContent
-          sx={{ padding: (theme) => `${theme.spacing(12, 9, 7)} !important` }}
-        >
-          <Box
-            sx={{
-              mb: 8,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+      <Navbar />
+      <Box className="content-center">
+        <Card sx={{ zIndex: 1 }}>
+          <CardContent
+            sx={{ padding: (theme) => `${theme.spacing(12, 9, 7)} !important` }}
           >
-            <StyledImage
-              style={{ background: theme?.palette?.primary?.main }}
-              src="/images/Logo.png"
-            />
-          </Box>
-          <Typography variant="body2" sx={{ textAlign: "center" }}>
-            {message}
-          </Typography>
-          <Box sx={{ mb: 6 }}>
-            <Typography
-              variant="h5"
-              sx={{ fontWeight: 600, marginBottom: 1.5 }}
+            <Box
+              sx={{
+                mb: 8,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
-              Forgot Password
+              <StyledImage
+                style={{ background: theme?.palette?.primary?.main }}
+                src="/images/Logo.png"
+              />
+            </Box>
+            <Typography variant="body2" sx={{ textAlign: "center" }}>
+              {message}
             </Typography>
-          </Box>
-          <form
-            noValidate
-            autoComplete="off"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <TextField
-              autoFocus
-              fullWidth
-              id="email"
-              name="email"
-              required
-              // error={errors.email ? true : false}
-              // helperText={errors.email && errors.email}
-              label="Email"
-              sx={{ marginBottom: 4 }}
-              onChange={(e) => {
-                setMessage("");
-                setEmail(e.target.value);
-              }}
-            />
-            <LoadingButton
-              fullWidth
-              size="large"
-              variant="contained"
-              sx={{ marginBottom: 4 }}
-              onClick={handleSubmit}
+            <Box sx={{ mb: 6 }}>
+              <Typography
+                variant="h5"
+                sx={{ fontWeight: 600, marginBottom: 1.5 }}
+              >
+                Forgot Password
+              </Typography>
+            </Box>
+            <form
+              noValidate
+              autoComplete="off"
+              onSubmit={(e) => e.preventDefault()}
             >
-              Submit
-            </LoadingButton>
-            <Button
-              fullWidth
-              size="large"
-              variant="contained"
-              sx={{ marginBottom: 4 }}
-              onClick={() => {
-                router.push("/");
-              }}
-            >
-              Back
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-      <FooterIllustrationsV1 />
-    </Box>
+              <TextField
+                autoFocus
+                fullWidth
+                id="email"
+                name="email"
+                required
+                // error={errors.email ? true : false}
+                // helperText={errors.email && errors.email}
+                label="Email"
+                sx={{ marginBottom: 4 }}
+                onChange={(e) => {
+                  setMessage("");
+                  setEmail(e.target.value);
+                }}
+              />
+              <LoadingButton
+                fullWidth
+                size="large"
+                variant="contained"
+                sx={{ marginBottom: 4 }}
+                onClick={handleSubmit}
+              >
+                Submit
+              </LoadingButton>
+              <Button
+                fullWidth
+                size="large"
+                variant="contained"
+                sx={{ marginBottom: 4 }}
+                onClick={() => {
+                  router.push("/");
+                }}
+              >
+                Back
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+        <FooterIllustrationsV1 />
+      </Box>
     </>
   );
 };
