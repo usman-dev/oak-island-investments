@@ -41,7 +41,7 @@ const ForgotPassword = () => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async () => {
-    const data = await axios.post("/api/forget");
+    const data = await axios.get("https://oak-api-app.herokuapp.com/forget");
 
     setMessage(data?.data?.message);
   };

@@ -83,7 +83,10 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = await axios.post("/api/login", values);
+    const data = await axios.post(
+      `https://oak-api-app.herokuapp.com/login`,
+      values
+    );
 
     if (data.data?.status === 200) {
       router.push("/dashboard");
