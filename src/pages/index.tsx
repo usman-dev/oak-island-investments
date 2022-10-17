@@ -63,6 +63,10 @@ const StyledImage = styled("img")({
 const LoginPage = () => {
   const [loading, setLoading] = useState<any>(false);
   const [isError, setIsError] = useState<string>("");
+  const [validationError, setValidationError] = useState({
+    email: "",
+    password: "",
+  });
   const [isShowPassword, setIsShowPassword] = useState<Boolean>(false);
 
   // ** Hook
@@ -83,15 +87,40 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = await axios.post(
-      `https://oak-api-app.herokuapp.com/login`,
-      values
-    );
-
-    if (data.data?.status === 200) {
-      router.push("/dashboard");
+    if (!values.email) {
+      setValidationError({
+        ...validationError,
+        email: "Email is Required!",
+      });
     } else {
-      setIsError(data.data?.message);
+      setValidationError({
+        ...validationError,
+        email: "",
+      });
+    }
+    if (!values.password) {
+      setValidationError({
+        ...validationError,
+        password: "Password is Required!",
+      });
+    } else {
+      setValidationError({
+        ...validationError,
+        password: "",
+      });
+    }
+
+    if (values.email && values.password) {
+      const data = await axios.post(
+        `https://oak-api-app.herokuapp.com/login`,
+        values
+      );
+
+      if (data.data?.status === 200) {
+        router.push("/dashboard");
+      } else {
+        setIsError(data.data?.message);
+      }
     }
   };
 
@@ -144,8 +173,8 @@ const LoginPage = () => {
                 name="email"
                 sx={{ marginBottom: 4 }}
                 required
-                error={errors.email ? true : false}
-                helperText={errors.email && errors.email}
+                error={validationError.email ? true : false}
+                helperText={validationError.email && validationError.email}
                 onChange={handleChange}
                 // onChange={(e) => setEmail(e.target.value)}
                 // onChange={handleChange('email')}
@@ -158,7 +187,7 @@ const LoginPage = () => {
                   id="auth-login-password"
                   name="password"
                   required
-                  error={errors.password ? true : false}
+                  error={validationError.password ? true : false}
                   onChange={handleChange}
                   // onChange={(e) => setPassword(e.target.value)}
                   // onChange={handleChange('password')}
@@ -176,9 +205,11 @@ const LoginPage = () => {
                     </InputAdornment>
                   }
                 />
-                {errors.password && (
-                  <FormHelperText error={errors.password ? true : false}>
-                    {errors.password}
+                {validationError.password && (
+                  <FormHelperText
+                    error={validationError.password ? true : false}
+                  >
+                    {validationError.password}
                   </FormHelperText>
                 )}
               </FormControl>

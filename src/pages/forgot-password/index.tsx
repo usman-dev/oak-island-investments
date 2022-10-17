@@ -38,12 +38,20 @@ const ForgotPassword = () => {
 
   const router = useRouter();
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+
   const [message, setMessage] = useState("");
 
   const handleSubmit = async () => {
-    const data = await axios.get("https://oak-api-app.herokuapp.com/forget");
+    if (email) {
+      setError("");
 
-    setMessage(data?.data?.message);
+      const data = await axios.get("https://oak-api-app.herokuapp.com/forget");
+
+      setMessage(data?.data?.message);
+    } else {
+      setError("Email is required!");
+    }
   };
 
   return (
@@ -89,8 +97,8 @@ const ForgotPassword = () => {
                 id="email"
                 name="email"
                 required
-                // error={errors.email ? true : false}
-                // helperText={errors.email && errors.email}
+                error={error ? true : false}
+                helperText={error}
                 label="Email"
                 sx={{ marginBottom: 4 }}
                 onChange={(e) => {
