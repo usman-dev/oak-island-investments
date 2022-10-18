@@ -128,7 +128,7 @@ const LoginPage = () => {
     <>
       <Navbar />
       <Box className="content-center">
-        <Card sx={{ zIndex: 1 }}>
+        <Card sx={{ zIndex: 1, }}>
           <CardContent
             sx={{
               padding: (theme) => `${theme.spacing(12, 9, 7)} !important`,
@@ -164,7 +164,7 @@ const LoginPage = () => {
                 {isError}
               </Typography>
             </Box>
-            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+            <form autoComplete="off" onSubmit={handleSubmit}>
               <TextField
                 autoFocus
                 fullWidth

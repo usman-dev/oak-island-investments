@@ -1,13 +1,17 @@
 import { Typography, Box } from "@mui/material";
+import Button from "@mui/material/Button";
 import Navbar from "src/@core/components/Common/Navbar";
+// ** Next Imports
+import { useRouter } from "next/router";
 
 const Contact = () => {
+  const router = useRouter();
   return (
     <>
       {/* <Navbar /> */}
       <Box
         sx={{
-          marginTop: "200px",
+          marginTop: "100px",
           textAlign: "center",
         }}
       >
@@ -25,6 +29,17 @@ const Contact = () => {
           <h2>Technical Support</h2>
           <h3>help@oakislandinvestments.net</h3>
         </Typography>
+        <Button
+          // fullWidth
+          size="large"
+          variant="contained"
+          sx={{ marginBottom: 4 }}
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          Back
+        </Button>
       </Box>
     </>
   );

@@ -18,6 +18,7 @@ import { styled } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useRouter } from "next/router";
 import { left } from "@popperjs/core";
+import { useTheme } from "@mui/material/styles";
 const StyledImage = styled("img")({
   objectFit: "contain",
   height: "70px",
@@ -33,12 +34,17 @@ interface Props {
 const drawerWidth = 240;
 const navItems = [
   {
+    title: "Login",
+    route: "/",
+  },
+  {
     title: "Contact",
     route: "/contact",
-  },
+  }
 ];
 
 export default function Navbar(props: Props) {
+  const theme = useTheme();
   const { window } = props;
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -49,14 +55,25 @@ export default function Navbar(props: Props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <StyledImage
+      {/* <StyledImage
+        onClick={() => changeRoute("/")}
+        style={{ background: theme?.palette?.primary?.main }}
         // style={{ background: theme?.palette?.primary?.main }}
         src="/images/Logo.png"
-      />
+      /> */}
+      <Typography
+        sx={{ backgroundColor: theme?.palette?.primary?.main  }}
+      >
+        <StyledImage
+          onClick={() => changeRoute("/")}
+          // style={{ background: theme?.palette?.primary?.main }}
+          src="/images/Logo.png"
+        />
+      </Typography>
       <List>
         {navItems.map((item: any) => (
           <ListItem key={item?.title} disablePadding>
-            <ListItemButton sx={{ textAlign: "center", display: "flex" }}>
+            <ListItemButton sx={{ textAlign: "left", display: "flex" }}>
               <ListItemText
                 primary={item?.title}
                 onClick={() => changeRoute(item?.route)}
@@ -103,8 +120,11 @@ export default function Navbar(props: Props) {
                 sx={{ display: { xs: "none", sm: "block" } }}
               >
                 <StyledImage
+                  onClick={() => changeRoute("/")}
                   // style={{ background: theme?.palette?.primary?.main }}
+                  style={{ height: "70px", width: "70px" }}
                   src="/images/Logo.png"
+                  
                 />
               </Typography>
               <Typography
